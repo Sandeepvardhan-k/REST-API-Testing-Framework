@@ -35,7 +35,7 @@ class TestPosts:
         assert response.status_code == 201
         assert data["title"] == "Test Post"
         assert data["body"] == "This is test body"
-        print(f"✅ Created post with id: {data['id']}")
+        print(f"Created post with id: {data['id']}")
 
     def test_update_post(self):
         # PUT — update existing post
@@ -48,23 +48,23 @@ class TestPosts:
         data = response.json()
         assert response.status_code == 200
         assert data["title"] == "Updated Title"
-        print("✅ Post updated successfully")
+        print("Post updated successfully")
 
     def test_delete_post(self):
         # DELETE — delete post
         response = self.client.delete("/posts/1")
         assert response.status_code == 200
-        print("✅ Post deleted successfully")
+        print("Post deleted successfully")
 
     def test_invalid_post(self):
         # GET non-existent post — should return 404
         response = self.client.get("/posts/9999")
         assert response.status_code == 404
-        print("✅ Invalid post returns 404")
+        print("Invalid post returns 404")
 
     def test_response_time(self):
         # Test API responds within 2 seconds
         response = self.client.get("/posts")
         time_taken = response.elapsed.total_seconds()
         assert time_taken < 2
-        print(f"✅ Response time: {time_taken} seconds")
+        print(f"Response time: {time_taken} seconds")
