@@ -11,7 +11,7 @@ class TestPosts:
         response = self.client.get("/posts")
         assert response.status_code == 200
         assert len(response.json()) == 100
-        print("✅ Got all 100 posts")
+        print("Got all 100 posts")
 
     def test_get_single_post(self):
         # GET post with id 1
@@ -21,7 +21,7 @@ class TestPosts:
         assert data["id"] == 1
         assert "title" in data
         assert "body" in data
-        print(f"✅ Got post: {data['title']}")
+        print(f"Got post: {data['title']}")
 
     def test_create_post(self):
         # POST — create new post
